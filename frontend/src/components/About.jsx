@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, TrendingUp, Users, Award, Flame } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
 
 const About = ({ data }) => {
   const containerVariants = {
@@ -20,19 +20,29 @@ const About = ({ data }) => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 0.8,
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
-  const statIcons = [TrendingUp, Users, Award, Flame];
+  const textRevealVariants = {
+    hidden: { y: 100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 1,
+        ease: [0.6, -0.05, 0.01, 0.99]
+      }
+    }
+  };
 
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-8 relative bg-black/50">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-orange-500/10" />
+    <div className="py-20 px-4 sm:px-6 lg:px-8 relative min-h-screen flex items-center">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0a0a0a]">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,255,218,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,218,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -41,102 +51,98 @@ const About = ({ data }) => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent"
-          >
-            {data.title}
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto rounded-full"
-          />
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="space-y-6"
-          >
-            <motion.p 
-              className="text-lg text-gray-300 leading-relaxed"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              {data.description}
-            </motion.p>
-
-            <motion.p 
-              className="text-md text-red-300 italic leading-relaxed"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              {data.tagline}
-            </motion.p>
-
-            <div className="space-y-4">
-              {data.highlights.map((highlight, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ x: 5, scale: 1.02 }}
-                  className="flex items-start space-x-3 p-2 rounded-lg hover:bg-red-900/20 transition-all duration-200"
-                >
-                  <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={20} />
-                  <span className="text-gray-300">{highlight}</span>
-                </motion.div>
-              ))}
-            </div>
-
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left content */}
             <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="inline-block mt-8"
+              variants={itemVariants}
+              className="space-y-8"
             >
-              <button className="px-8 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200">
-                Download Resume
-              </button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            className="grid grid-cols-2 gap-6"
-          >
-            {data.stats.map((stat, index) => {
-              const Icon = statIcons[index];
-              return (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-red-900/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 text-center hover:border-red-500/40 transition-all duration-300 hover:bg-red-900/50"
+              <div className="space-y-4">
+                <motion.p
+                  variants={textRevealVariants}
+                  className="text-[#64ffda] font-mono text-lg"
                 >
-                  <Icon className="text-red-400 mx-auto mb-4" size={32} />
-                  <motion.h3
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
+                  01. About Me
+                </motion.p>
+                <motion.h2
+                  variants={textRevealVariants}
+                  className="text-4xl md:text-5xl font-bold text-[#ccd6f6]"
+                >
+                  {data.title}
+                </motion.h2>
+              </div>
+
+              <motion.div
+                variants={textRevealVariants}
+                className="w-16 h-1 bg-[#64ffda] rounded-full"
+              />
+
+              <motion.p
+                variants={textRevealVariants}
+                className="text-lg text-[#8892b0] leading-relaxed"
+              >
+                {data.description}
+              </motion.p>
+
+              <motion.p
+                variants={textRevealVariants}
+                className="text-[#64ffda] font-mono italic"
+              >
+                {data.tagline}
+              </motion.p>
+
+              <motion.div
+                variants={textRevealVariants}
+                className="space-y-4"
+              >
+                {data.highlights.map((highlight, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
-                    className="text-3xl font-bold text-white mb-2"
+                    whileHover={{ x: 5 }}
+                    className="flex items-start space-x-3 p-3 rounded-lg hover:bg-[#112240] transition-all duration-300 cursor-pointer"
+                  >
+                    <CheckCircle className="text-[#64ffda] mt-1 flex-shrink-0" size={20} />
+                    <span className="text-[#8892b0]">{highlight}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
+
+            {/* Right content - Stats */}
+            <motion.div
+              variants={itemVariants}
+              className="grid grid-cols-2 gap-6"
+            >
+              {data.stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="bg-[#112240] border border-[#64ffda]/20 rounded-lg p-8 text-center hover:border-[#64ffda]/40 transition-all duration-300 cursor-pointer"
+                >
+                  <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2, duration: 0.5 }}
+                    className="text-4xl font-bold text-[#64ffda] mb-2"
                   >
                     {stat.value}
                   </motion.h3>
-                  <p className="text-gray-400 text-sm">{stat.label}</p>
+                  <p className="text-[#8892b0] text-sm font-mono">{stat.label}</p>
                 </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
+              ))}
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
