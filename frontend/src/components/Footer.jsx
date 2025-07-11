@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-black border-t border-red-500/20">
+    <footer className="relative bg-[#0a0a0a] border-t border-[#64ffda]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo and Description */}
@@ -26,14 +26,14 @@ const Footer = () => {
             className="text-center md:text-left"
           >
             <div className="flex items-center justify-center md:justify-start space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-sm">RV</span>
+              <div className="w-8 h-8 bg-[#64ffda] rounded-lg flex items-center justify-center">
+                <span className="text-[#0a0a0a] font-bold text-sm">RV</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-[#ccd6f6] font-mono">
                 Raj Vardhan
               </span>
             </div>
-            <p className="text-gray-400 text-sm">
+            <p className="text-[#8892b0] text-sm">
               Building innovative solutions with passion and precision
             </p>
           </motion.div>
@@ -54,9 +54,9 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-red-900/30 hover:bg-red-600 rounded-lg transition-colors group"
+                className="p-3 bg-[#112240] hover:bg-[#64ffda] hover:text-[#0a0a0a] rounded-lg transition-colors group"
               >
-                <link.icon size={20} className="text-gray-400 group-hover:text-white" />
+                <link.icon size={20} className="text-[#64ffda] group-hover:text-[#0a0a0a]" />
               </motion.a>
             ))}
           </motion.div>
@@ -73,7 +73,7 @@ const Footer = () => {
               onClick={scrollToTop}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-[#64ffda] text-[#0a0a0a] rounded-lg font-mono font-medium hover:bg-[#4fd1c7] transition-all duration-300 shadow-lg"
             >
               <ArrowUp size={16} />
               <span>Back to Top</span>
@@ -87,15 +87,15 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 pt-8 border-t border-red-500/20 text-center"
+          className="mt-8 pt-8 border-t border-[#64ffda]/20 text-center"
         >
-          <p className="text-gray-400 text-sm flex items-center justify-center space-x-2">
-            <span>© 2025 Raj Vardhan. Made with</span>
+          <p className="text-[#8892b0] text-sm flex items-center justify-center space-x-2 font-mono">
+            <span>© 2025 Raj Vardhan. Built with</span>
             <motion.span
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Heart size={16} className="text-red-400" />
+              <Heart size={16} className="text-[#64ffda]" />
             </motion.span>
             <span>using React & Framer Motion</span>
           </p>
