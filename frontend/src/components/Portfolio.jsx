@@ -23,20 +23,20 @@ const Portfolio = () => {
   }, []);
 
   const sectionVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 100 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-gradient-to-br from-black via-red-900 to-black flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-[#0a0a0a] flex items-center justify-center z-50">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -46,13 +46,13 @@ const Portfolio = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full mx-auto mb-4"
+            className="w-16 h-16 border-4 border-[#64ffda] border-t-transparent rounded-full mx-auto mb-4"
           />
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-2xl font-bold text-white"
+            className="text-2xl font-bold text-[#ccd6f6]"
           >
             Loading Portfolio...
           </motion.h1>
@@ -62,7 +62,7 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-red-900 to-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] text-[#ccd6f6] overflow-x-hidden">
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
       <motion.section

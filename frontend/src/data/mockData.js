@@ -1,10 +1,10 @@
 export const mockData = {
   hero: {
-    name: "RAJ VARDHAN",
-    title: "Full Stack Developer & Technical Consultant",
-    location: "Bangalore, India",
+    name: "Raj Vardhan",
+    greeting: "Hey, I am",
     description: "I enjoy solving real-world problems using tech. Currently working on API integrations, debugging, and scalable fintech solutions at Razorpay. Skilled in Python, C++, Django, REST APIs, and ML. Passionate about building smart, reliable systems that make an impact.",
     tagline: "Always open to learning, collaborating, and growing in the tech space.",
+    location: "Bangalore, India",
     email: "rajvardhan2913@gmail.com",
     github: "https://github.com/raj2913",
     linkedin: "https://www.linkedin.com/in/raj-vardhan-721ba8220/",
@@ -16,7 +16,7 @@ export const mockData = {
     description: "I enjoy solving real-world problems using tech. Currently working on API integrations, debugging, and scalable fintech solutions at Razorpay. Skilled in Python, C++, Django, REST APIs, and ML. Passionate about building smart, reliable systems that make an impact.",
     tagline: "Always open to learning, collaborating, and growing in the tech space.",
     highlights: [
-      "B.Tech in Computer Science with Specialization in Bioinformatics from VIT (CGPA: 8.81)",
+      "B.Tech in Computer Science with Specialization in Bioinformatics from VIT",
       "Published research in AI-powered health management applications",
       "Experience with Python, JavaScript, Django, FastAPI, and modern web frameworks",
       "Skilled in API debugging, system integration, and technical problem-solving"
@@ -198,6 +198,20 @@ export const mockData = {
             duration: "2021 - 2025",
             location: "Vellore, India",
             gpa: "CGPA: 8.81"
+          },
+          {
+            degree: "12th (Science)",
+            institution: "Shri Ram Centennial School",
+            duration: "2019 - 2021",
+            location: "Indore, India",
+            gpa: "Percentage: 87.8%"
+          },
+          {
+            degree: "10th (CBSE)",
+            institution: "Advanced Academy India",
+            duration: "2019",
+            location: "Indore, India",
+            gpa: "Percentage: 91.2%"
           }
         ]
       },
@@ -206,6 +220,11 @@ export const mockData = {
         items: [
           {
             name: "Google Cloud Foundation",
+            issuer: "Google Cloud",
+            date: "2024"
+          },
+          {
+            name: "Google Cloud Leader",
             issuer: "Google Cloud",
             date: "2024"
           }

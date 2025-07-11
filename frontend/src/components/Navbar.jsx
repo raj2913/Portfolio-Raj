@@ -37,10 +37,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
     <motion.nav
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-black/95 backdrop-blur-md border-b border-red-500/20'
+          ? 'bg-[#0a0a0a]/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
     >
@@ -50,33 +50,37 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-sm">RV</span>
+            <div className="w-10 h-10 bg-[#64ffda] rounded-lg flex items-center justify-center">
+              <span className="text-[#0a0a0a] font-bold text-lg">RV</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold text-[#ccd6f6] font-mono">
               Raj Vardhan
             </span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                className={`relative px-3 py-2 text-sm font-mono transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-red-400'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-[#64ffda]'
+                    : 'text-[#8892b0] hover:text-[#ccd6f6]'
                 }`}
               >
+                <span className="text-[#64ffda] mr-1">0{index + 1}.</span>
                 {item.label}
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#64ffda] rounded-full"
                   />
                 )}
               </motion.button>
@@ -88,9 +92,9 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-red-800/50 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-[#112240] transition-colors"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={24} className="text-[#64ffda]" /> : <Menu size={24} className="text-[#64ffda]" />}
           </motion.button>
         </div>
       </div>
@@ -101,20 +105,21 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-black/95 backdrop-blur-md border-b border-red-500/20"
+          className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md"
         >
           <div className="px-4 py-2 space-y-1">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 whileHover={{ x: 5 }}
-                className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                className={`block w-full text-left px-3 py-2 text-sm font-mono rounded-lg transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-red-400 bg-red-500/10'
-                    : 'text-gray-300 hover:text-white hover:bg-red-800/50'
+                    ? 'text-[#64ffda] bg-[#112240]'
+                    : 'text-[#8892b0] hover:text-[#ccd6f6] hover:bg-[#112240]'
                 }`}
               >
+                <span className="text-[#64ffda] mr-1">0{index + 1}.</span>
                 {item.label}
               </motion.button>
             ))}

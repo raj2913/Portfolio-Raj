@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, MapPin, Code, Zap } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const Hero = ({ data }) => {
   const containerVariants = {
@@ -15,19 +15,19 @@ const Hero = ({ data }) => {
   };
 
   const itemVariants = {
-    hidden: { y: 50, opacity: 0 },
+    hidden: { y: 100, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: "easeOut"
+        ease: [0.6, -0.05, 0.01, 0.99]
       }
     }
   };
 
   const floatingAnimation = {
-    y: [-20, 20, -20],
+    y: [0, -20, 0],
     transition: {
       duration: 6,
       repeat: Infinity,
@@ -37,27 +37,17 @@ const Hero = ({ data }) => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-red-900 to-black" />
-        <motion.div
-          animate={{
-            backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-orange-500/10 to-yellow-500/10 bg-[length:400%_400%]"
-        />
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0a0a0a]">
+        {/* Animated grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(100,255,218,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,255,218,0.03)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_40%,transparent_100%)]" />
         
-        {/* Matrix-like particles */}
+        {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(50)].map((_, i) => (
+          {[...Array(20)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute w-1 h-1 bg-red-500 rounded-full"
+              className="absolute w-1 h-1 bg-[#64ffda] rounded-full"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -65,9 +55,10 @@ const Hero = ({ data }) => {
               animate={{
                 opacity: [0, 1, 0],
                 scale: [0, 1, 0],
+                y: [0, -100, 0],
               }}
               transition={{
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 delay: Math.random() * 2,
                 ease: "easeInOut"
@@ -77,145 +68,122 @@ const Hero = ({ data }) => {
         </div>
       </div>
 
-      {/* Floating Geometric Shapes */}
-      <motion.div
-        animate={floatingAnimation}
-        className="absolute top-1/4 left-1/4 w-32 h-32 bg-red-500/20 rounded-lg blur-xl rotate-45"
-      />
-      <motion.div
-        animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 1 } }}
-        className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-orange-500/20 rounded-lg blur-xl rotate-12"
-      />
-      <motion.div
-        animate={{ ...floatingAnimation, transition: { ...floatingAnimation.transition, delay: 2 } }}
-        className="absolute top-1/2 right-1/3 w-16 h-16 bg-yellow-500/20 rounded-lg blur-xl rotate-45"
-      />
-
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       >
-        <motion.div
-          variants={itemVariants}
-          className="mb-8"
-        >
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          {/* Left content */}
+          <div className="flex-1 text-center lg:text-left">
+            <motion.p
+              variants={itemVariants}
+              className="text-[#64ffda] font-mono text-lg mb-6"
+            >
+              {data.greeting}
+            </motion.p>
+
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            >
+              <span className="text-[#ccd6f6]">{data.name}</span>
+            </motion.h1>
+
+            <motion.div
+              variants={itemVariants}
+              className="flex items-center justify-center lg:justify-start space-x-2 text-[#8892b0] mb-8"
+            >
+              <MapPin size={20} />
+              <span className="text-lg">{data.location}</span>
+            </motion.div>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-[#8892b0] mb-8 max-w-2xl leading-relaxed"
+            >
+              {data.description}
+            </motion.p>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-[#64ffda] font-mono mb-12 italic"
+            >
+              {data.tagline}
+            </motion.p>
+
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 mb-16"
+            >
+              <motion.a
+                href={data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center space-x-2 px-8 py-4 border-2 border-[#64ffda] text-[#64ffda] rounded-lg font-mono transition-all duration-300 hover:bg-[#64ffda] hover:bg-opacity-10"
+              >
+                <Github size={20} />
+                <span>GitHub</span>
+              </motion.a>
+
+              <motion.a
+                href={data.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center space-x-2 px-8 py-4 border-2 border-[#64ffda] text-[#64ffda] rounded-lg font-mono transition-all duration-300 hover:bg-[#64ffda] hover:bg-opacity-10"
+              >
+                <Linkedin size={20} />
+                <span>LinkedIn</span>
+              </motion.a>
+
+              <motion.a
+                href={`mailto:${data.email}`}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center space-x-2 px-8 py-4 bg-[#64ffda] text-[#0a0a0a] rounded-lg font-mono font-semibold transition-all duration-300 hover:bg-[#4fd1c7]"
+              >
+                <Mail size={20} />
+                <span>Get In Touch</span>
+              </motion.a>
+            </motion.div>
+          </div>
+
+          {/* Right content - Profile Image */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="relative inline-block"
+            variants={itemVariants}
+            className="flex-shrink-0"
           >
-            <div className="w-40 h-40 mx-auto mb-6 rounded-full bg-gradient-to-r from-red-500 to-orange-500 p-1">
-              <div className="w-full h-full rounded-full bg-black flex items-center justify-center overflow-hidden">
+            <motion.div
+              animate={floatingAnimation}
+              className="relative"
+            >
+              <div className="relative w-80 h-80 rounded-full overflow-hidden border-4 border-[#64ffda] shadow-2xl">
                 <img 
                   src={data.profileImage} 
                   alt="Raj Vardhan" 
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = "https://via.placeholder.com/400x400/64ffda/0a0a0a?text=RV";
+                  }}
                 />
               </div>
-            </div>
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-red-500/30 border-dashed"
-            />
-            
-            {/* Floating Icons */}
-            <motion.div
-              animate={{ rotate: 360, x: [0, 20, 0], y: [0, -20, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-4 -right-4 p-2 bg-red-500/20 rounded-full backdrop-blur-sm"
-            >
-              <Code size={20} className="text-red-400" />
-            </motion.div>
-            <motion.div
-              animate={{ rotate: -360, x: [0, -20, 0], y: [0, 20, 0] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -bottom-4 -left-4 p-2 bg-orange-500/20 rounded-full backdrop-blur-sm"
-            >
-              <Zap size={20} className="text-orange-400" />
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 rounded-full border-2 border-dashed border-[#64ffda] opacity-30"
+              />
             </motion.div>
           </motion.div>
-        </motion.div>
-
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-red-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent"
-        >
-          {data.name}
-        </motion.h1>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-xl md:text-2xl text-gray-300 mb-4 font-light"
-        >
-          {data.title}
-        </motion.p>
+        </div>
 
         <motion.div
           variants={itemVariants}
-          className="flex items-center justify-center space-x-2 text-red-300 mb-8"
-        >
-          <MapPin size={20} />
-          <span className="text-lg">{data.location}</span>
-        </motion.div>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-lg text-gray-400 mb-6 max-w-3xl mx-auto leading-relaxed"
-        >
-          {data.description}
-        </motion.p>
-
-        <motion.p
-          variants={itemVariants}
-          className="text-md text-red-300 mb-12 max-w-2xl mx-auto italic"
-        >
-          {data.tagline}
-        </motion.p>
-
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16"
-        >
-          <motion.a
-            href={data.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full font-medium transition-all duration-200 hover:shadow-lg hover:shadow-red-500/25"
-          >
-            <Github size={20} />
-            <span>View GitHub</span>
-          </motion.a>
-
-          <motion.a
-            href={data.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-8 py-3 border-2 border-red-500 text-red-300 rounded-full font-medium transition-all duration-200 hover:bg-red-500/10 hover:shadow-lg hover:shadow-red-500/25"
-          >
-            <Linkedin size={20} />
-            <span>Connect</span>
-          </motion.a>
-
-          <motion.a
-            href={`mailto:${data.email}`}
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center space-x-2 px-8 py-3 border-2 border-orange-500 text-orange-300 rounded-full font-medium transition-all duration-200 hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/25"
-          >
-            <Mail size={20} />
-            <span>Email Me</span>
-          </motion.a>
-        </motion.div>
-
-        <motion.div
-          variants={itemVariants}
-          className="flex justify-center"
+          className="flex justify-center mt-16"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
@@ -223,7 +191,7 @@ const Hero = ({ data }) => {
             className="cursor-pointer"
             onClick={() => document.getElementById('about').scrollIntoView({ behavior: 'smooth' })}
           >
-            <ArrowDown size={32} className="text-red-400 hover:text-red-300 transition-colors" />
+            <ArrowDown size={32} className="text-[#64ffda] hover:text-[#4fd1c7] transition-colors" />
           </motion.div>
         </motion.div>
       </motion.div>
