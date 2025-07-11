@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle, TrendingUp, Users, Award } from 'lucide-react';
+import { CheckCircle, TrendingUp, Users, Award, Flame } from 'lucide-react';
 
 const About = ({ data }) => {
   const containerVariants = {
@@ -26,11 +26,16 @@ const About = ({ data }) => {
     }
   };
 
-  const statIcons = [TrendingUp, Users, Award, CheckCircle];
+  const statIcons = [TrendingUp, Users, Award, Flame];
 
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-20 px-4 sm:px-6 lg:px-8 relative bg-black/50">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-orange-500/10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -40,13 +45,13 @@ const About = ({ data }) => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent"
           >
             {data.title}
           </motion.h2>
           <motion.div
             variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto rounded-full"
           />
         </motion.div>
 
@@ -58,9 +63,21 @@ const About = ({ data }) => {
             viewport={{ once: true, amount: 0.3 }}
             className="space-y-6"
           >
-            <p className="text-lg text-gray-300 leading-relaxed">
+            <motion.p 
+              className="text-lg text-gray-300 leading-relaxed"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
               {data.description}
-            </p>
+            </motion.p>
+
+            <motion.p 
+              className="text-md text-red-300 italic leading-relaxed"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.2 }}
+            >
+              {data.tagline}
+            </motion.p>
 
             <div className="space-y-4">
               {data.highlights.map((highlight, index) => (
@@ -70,7 +87,8 @@ const About = ({ data }) => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.5 }}
-                  className="flex items-start space-x-3"
+                  whileHover={{ x: 5, scale: 1.02 }}
+                  className="flex items-start space-x-3 p-2 rounded-lg hover:bg-red-900/20 transition-all duration-200"
                 >
                   <CheckCircle className="text-green-400 mt-1 flex-shrink-0" size={20} />
                   <span className="text-gray-300">{highlight}</span>
@@ -82,7 +100,7 @@ const About = ({ data }) => {
               whileHover={{ scale: 1.02 }}
               className="inline-block mt-8"
             >
-              <button className="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200">
+              <button className="px-8 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200">
                 Download Resume
               </button>
             </motion.div>
@@ -101,9 +119,9 @@ const About = ({ data }) => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="bg-slate-800/50 backdrop-blur-sm border border-purple-500/20 rounded-xl p-6 text-center hover:border-purple-500/40 transition-all duration-300"
+                  className="bg-red-900/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-6 text-center hover:border-red-500/40 transition-all duration-300 hover:bg-red-900/50"
                 >
-                  <Icon className="text-purple-400 mx-auto mb-4" size={32} />
+                  <Icon className="text-red-400 mx-auto mb-4" size={32} />
                   <motion.h3
                     initial={{ opacity: 0, scale: 0.5 }}
                     whileInView={{ opacity: 1, scale: 1 }}
