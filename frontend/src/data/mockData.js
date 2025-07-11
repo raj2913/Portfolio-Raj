@@ -8,7 +8,7 @@ export const mockData = {
     email: "rajvardhan2913@gmail.com",
     github: "https://github.com/raj2913",
     linkedin: "https://www.linkedin.com/in/raj-vardhan-721ba8220/",
-    profileImage: "https://avatars.githubusercontent.com/u/raj2913?v=4"
+    profileImage: "https://github.com/raj2913.png"
   },
   
   about: {
