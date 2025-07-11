@@ -52,8 +52,13 @@ const Resume = ({ data }) => {
   };
 
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-8 relative bg-slate-900/50">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-red-500/10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -63,13 +68,13 @@ const Resume = ({ data }) => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent"
           >
             {data.title}
           </motion.h2>
           <motion.div
             variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto rounded-full"
           />
           <motion.p
             variants={itemVariants}
@@ -96,8 +101,8 @@ const Resume = ({ data }) => {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full text-left p-4 rounded-lg transition-all duration-200 flex items-center space-x-3 ${
                   activeSection === section.title
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25'
-                    : 'bg-slate-800/50 text-gray-300 hover:bg-slate-700/50 hover:text-white'
+                    ? 'bg-red-600 text-white shadow-lg shadow-red-500/25'
+                    : 'bg-red-900/30 text-gray-300 hover:bg-red-800/50 hover:text-white'
                 }`}
               >
                 {getSectionIcon(section.title)}
@@ -109,7 +114,7 @@ const Resume = ({ data }) => {
               onClick={handleDownload}
               whileHover={{ scale: 1.02, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full mt-6 p-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 flex items-center justify-center space-x-2"
+              className="w-full mt-6 p-4 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200 flex items-center justify-center space-x-2"
             >
               <Download size={20} />
               <span>Download PDF</span>
@@ -124,7 +129,7 @@ const Resume = ({ data }) => {
             viewport={{ once: true, amount: 0.3 }}
             className="lg:col-span-3"
           >
-            <div className="bg-slate-800/30 backdrop-blur-sm border border-purple-500/20 rounded-xl p-8">
+            <div className="bg-red-900/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-white mb-8 flex items-center space-x-3">
                 {getSectionIcon(activeSection)}
                 <span>{activeSection}</span>
@@ -139,15 +144,16 @@ const Resume = ({ data }) => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1, duration: 0.5 }}
-                      className="relative pl-8 border-l-2 border-purple-500/30 hover:border-purple-500/60 transition-colors"
+                      whileHover={{ x: 5 }}
+                      className="relative pl-8 border-l-2 border-red-500/30 hover:border-red-500/60 transition-colors"
                     >
-                      <div className="absolute left-0 top-0 w-4 h-4 bg-purple-500 rounded-full -ml-2 border-4 border-slate-800" />
+                      <div className="absolute left-0 top-0 w-4 h-4 bg-red-500 rounded-full -ml-2 border-4 border-black" />
                       
                       {activeSection === 'Experience' && (
                         <div className="space-y-4">
                           <div>
                             <h4 className="text-xl font-bold text-white">{item.position}</h4>
-                            <div className="flex flex-wrap items-center gap-4 text-purple-300 mt-2">
+                            <div className="flex flex-wrap items-center gap-4 text-red-300 mt-2">
                               <div className="flex items-center space-x-1">
                                 <Building size={16} />
                                 <span>{item.company}</span>
@@ -165,7 +171,7 @@ const Resume = ({ data }) => {
                           <ul className="space-y-2">
                             {item.responsibilities.map((responsibility, respIndex) => (
                               <li key={respIndex} className="flex items-start space-x-2 text-gray-300">
-                                <span className="text-purple-400 mt-1">•</span>
+                                <span className="text-red-400 mt-1">•</span>
                                 <span>{responsibility}</span>
                               </li>
                             ))}
@@ -177,7 +183,7 @@ const Resume = ({ data }) => {
                         <div className="space-y-3">
                           <div>
                             <h4 className="text-xl font-bold text-white">{item.degree}</h4>
-                            <div className="flex flex-wrap items-center gap-4 text-purple-300 mt-2">
+                            <div className="flex flex-wrap items-center gap-4 text-red-300 mt-2">
                               <div className="flex items-center space-x-1">
                                 <GraduationCap size={16} />
                                 <span>{item.institution}</span>
@@ -204,7 +210,7 @@ const Resume = ({ data }) => {
                         <div className="space-y-3">
                           <div>
                             <h4 className="text-xl font-bold text-white">{item.name}</h4>
-                            <div className="flex flex-wrap items-center gap-4 text-purple-300 mt-2">
+                            <div className="flex flex-wrap items-center gap-4 text-red-300 mt-2">
                               <div className="flex items-center space-x-1">
                                 <Award size={16} />
                                 <span>{item.issuer}</span>

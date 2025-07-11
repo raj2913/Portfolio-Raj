@@ -66,8 +66,13 @@ const Contact = ({ data }) => {
   ];
 
   return (
-    <div className="py-20 px-4 sm:px-6 lg:px-8 relative">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-20 px-4 sm:px-6 lg:px-8 relative bg-black/50">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 via-transparent to-orange-500/10" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -77,13 +82,13 @@ const Contact = ({ data }) => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent"
           >
             {data.title}
           </motion.h2>
           <motion.div
             variants={itemVariants}
-            className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"
+            className="w-24 h-1 bg-gradient-to-r from-red-500 to-orange-500 mx-auto rounded-full"
           />
           <motion.p
             variants={itemVariants}
@@ -102,7 +107,7 @@ const Contact = ({ data }) => {
             viewport={{ once: true, amount: 0.3 }}
             className="space-y-8"
           >
-            <div className="bg-slate-800/30 backdrop-blur-sm border border-purple-500/20 rounded-xl p-8">
+            <div className="bg-red-900/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-8">
               <h3 className="text-2xl font-bold text-white mb-6">Contact Information</h3>
               
               <div className="space-y-6">
@@ -110,8 +115,8 @@ const Contact = ({ data }) => {
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-4 text-gray-300"
                 >
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <Mail size={20} className="text-purple-400" />
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <Mail size={20} className="text-red-400" />
                   </div>
                   <div>
                     <p className="font-medium">{data.email}</p>
@@ -123,8 +128,8 @@ const Contact = ({ data }) => {
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-4 text-gray-300"
                 >
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <Phone size={20} className="text-purple-400" />
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <Phone size={20} className="text-red-400" />
                   </div>
                   <div>
                     <p className="font-medium">{data.phone}</p>
@@ -136,8 +141,8 @@ const Contact = ({ data }) => {
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-4 text-gray-300"
                 >
-                  <div className="p-3 bg-purple-500/20 rounded-lg">
-                    <MapPin size={20} className="text-purple-400" />
+                  <div className="p-3 bg-red-500/20 rounded-lg">
+                    <MapPin size={20} className="text-red-400" />
                   </div>
                   <div>
                     <p className="font-medium">{data.location}</p>
@@ -146,7 +151,7 @@ const Contact = ({ data }) => {
                 </motion.div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-purple-500/20">
+              <div className="mt-8 pt-8 border-t border-red-500/20">
                 <h4 className="text-lg font-semibold text-white mb-4">Follow Me</h4>
                 <div className="flex space-x-4">
                   {socialLinks.map((link, index) => (
@@ -157,7 +162,7 @@ const Contact = ({ data }) => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.95 }}
-                      className="p-3 bg-slate-700 hover:bg-purple-600 rounded-lg transition-colors"
+                      className="p-3 bg-red-800/50 hover:bg-red-600 rounded-lg transition-colors"
                     >
                       <link.icon size={20} className="text-white" />
                     </motion.a>
@@ -165,7 +170,7 @@ const Contact = ({ data }) => {
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-purple-500/20">
+              <div className="mt-8 pt-8 border-t border-red-500/20">
                 <div className="inline-block px-4 py-2 bg-green-500/20 text-green-300 rounded-full text-sm font-medium">
                   {data.availability}
                 </div>
@@ -179,7 +184,7 @@ const Contact = ({ data }) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
-            className="bg-slate-800/30 backdrop-blur-sm border border-purple-500/20 rounded-xl p-8"
+            className="bg-red-900/30 backdrop-blur-sm border border-red-500/20 rounded-xl p-8"
           >
             <h3 className="text-2xl font-bold text-white mb-6">Send Message</h3>
             
@@ -195,7 +200,7 @@ const Contact = ({ data }) => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700 border border-purple-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-red-800/30 border border-red-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   placeholder="Your name"
                 />
               </div>
@@ -211,7 +216,7 @@ const Contact = ({ data }) => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700 border border-purple-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                  className="w-full px-4 py-3 bg-red-800/30 border border-red-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -227,7 +232,7 @@ const Contact = ({ data }) => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-slate-700 border border-purple-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 bg-red-800/30 border border-red-500/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none"
                   placeholder="Tell me about your project or just say hello!"
                 />
               </div>
@@ -237,7 +242,7 @@ const Contact = ({ data }) => {
                 disabled={isSubmitting || isSubmitted}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>
