@@ -40,7 +40,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
       transition={{ duration: 0.8 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-slate-900/95 backdrop-blur-md border-b border-purple-500/20'
+          ? 'bg-black/95 backdrop-blur-md border-b border-red-500/20'
           : 'bg-transparent'
       }`}
     >
@@ -50,10 +50,10 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2"
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">RV</span>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
               Raj Vardhan
             </span>
           </motion.div>
@@ -68,7 +68,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 whileTap={{ scale: 0.95 }}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-purple-400'
+                    ? 'text-red-400'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -76,7 +76,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500 to-orange-500 rounded-full"
                   />
                 )}
               </motion.button>
@@ -88,7 +88,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-slate-800 transition-colors"
+            className="md:hidden p-2 rounded-lg hover:bg-red-800/50 transition-colors"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
@@ -101,7 +101,7 @@ const Navbar = ({ activeSection, setActiveSection }) => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="md:hidden bg-slate-900/95 backdrop-blur-md border-b border-purple-500/20"
+          className="md:hidden bg-black/95 backdrop-blur-md border-b border-red-500/20"
         >
           <div className="px-4 py-2 space-y-1">
             {navItems.map((item) => (
@@ -111,8 +111,8 @@ const Navbar = ({ activeSection, setActiveSection }) => {
                 whileHover={{ x: 5 }}
                 className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${
                   activeSection === item.id
-                    ? 'text-purple-400 bg-purple-500/10'
-                    : 'text-gray-300 hover:text-white hover:bg-slate-800'
+                    ? 'text-red-400 bg-red-500/10'
+                    : 'text-gray-300 hover:text-white hover:bg-red-800/50'
                 }`}
               >
                 {item.label}

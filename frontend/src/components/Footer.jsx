@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative bg-slate-900 border-t border-purple-500/20">
+    <footer className="relative bg-black border-t border-red-500/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo and Description */}
@@ -26,10 +26,10 @@ const Footer = () => {
             className="text-center md:text-left"
           >
             <div className="flex items-center justify-center md:justify-start space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-orange-500 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">RV</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="text-xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
                 Raj Vardhan
               </span>
             </div>
@@ -54,7 +54,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-3 bg-slate-800 hover:bg-purple-600 rounded-lg transition-colors group"
+                className="p-3 bg-red-900/30 hover:bg-red-600 rounded-lg transition-colors group"
               >
                 <link.icon size={20} className="text-gray-400 group-hover:text-white" />
               </motion.a>
@@ -73,7 +73,7 @@ const Footer = () => {
               onClick={scrollToTop}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-200"
+              className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-red-600 to-orange-600 text-white rounded-full font-medium hover:shadow-lg hover:shadow-red-500/25 transition-all duration-200"
             >
               <ArrowUp size={16} />
               <span>Back to Top</span>
@@ -87,7 +87,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 pt-8 border-t border-purple-500/20 text-center"
+          className="mt-8 pt-8 border-t border-red-500/20 text-center"
         >
           <p className="text-gray-400 text-sm flex items-center justify-center space-x-2">
             <span>© 2025 Raj Vardhan. Made with</span>

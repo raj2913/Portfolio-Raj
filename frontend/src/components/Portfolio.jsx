@@ -36,7 +36,7 @@ const Portfolio = () => {
 
   if (isLoading) {
     return (
-      <div className="fixed inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 flex items-center justify-center z-50">
+      <div className="fixed inset-0 bg-gradient-to-br from-black via-red-900 to-black flex items-center justify-center z-50">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +46,7 @@ const Portfolio = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="w-16 h-16 border-4 border-purple-400 border-t-transparent rounded-full mx-auto mb-4"
+            className="w-16 h-16 border-4 border-red-500 border-t-transparent rounded-full mx-auto mb-4"
           />
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
@@ -62,7 +62,7 @@ const Portfolio = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-black via-red-900 to-black text-white overflow-x-hidden">
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
       <motion.section

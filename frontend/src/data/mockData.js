@@ -1,17 +1,20 @@
 export const mockData = {
   hero: {
     name: "RAJ VARDHAN",
-    title: "Associate Technical Consultant & Full Stack Developer",
+    title: "Full Stack Developer & Technical Consultant",
     location: "Bangalore, India",
-    description: "Passionate about building innovative solutions with expertise in Python, JavaScript, and modern web technologies. Currently working at Razorpay, solving complex technical challenges for enterprise merchants.",
+    description: "I enjoy solving real-world problems using tech. Currently working on API integrations, debugging, and scalable fintech solutions at Razorpay. Skilled in Python, C++, Django, REST APIs, and ML. Passionate about building smart, reliable systems that make an impact.",
+    tagline: "Always open to learning, collaborating, and growing in the tech space.",
     email: "rajvardhan2913@gmail.com",
     github: "https://github.com/raj2913",
-    linkedin: "https://www.linkedin.com/in/raj-vardhan-721ba8220/"
+    linkedin: "https://www.linkedin.com/in/raj-vardhan-721ba8220/",
+    profileImage: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAoACgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD1+iiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/2Q=="
   },
   
   about: {
     title: "About Me",
-    description: "I'm a passionate full-stack developer and technical consultant with expertise in building scalable web applications and solving complex technical challenges. Currently working at Razorpay as an Associate Technical Consultant, I help enterprise merchants resolve critical technical issues involving REST APIs, webhooks, and payment gateway integrations.",
+    description: "I enjoy solving real-world problems using tech. Currently working on API integrations, debugging, and scalable fintech solutions at Razorpay. Skilled in Python, C++, Django, REST APIs, and ML. Passionate about building smart, reliable systems that make an impact.",
+    tagline: "Always open to learning, collaborating, and growing in the tech space.",
     highlights: [
       "B.Tech in Computer Science with Specialization in Bioinformatics from VIT (CGPA: 8.81)",
       "Published research in AI-powered health management applications",
